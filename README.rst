@@ -27,8 +27,8 @@ Git helper library for Storm platform
         :target: https://codecov.io/gh/storm-platform/storm-git
         :alt: Code Coverage Test
 
-.. image:: https://readthedocs.org/projects/storm_access/badge/?version=latest
-        :target: https://storm_access.readthedocs.io/en/latest/
+.. image:: https://readthedocs.org/projects/storm_git/badge/?version=latest
+        :target: https://storm_git.readthedocs.io/en/latest/
         :alt: Documentation Status
 
 .. image:: https://img.shields.io/github/tag/storm-platform/storm-git.svg
@@ -36,8 +36,8 @@ Git helper library for Storm platform
         :alt: Release
 
 
-.. image:: https://img.shields.io/pypi/v/storm_access
-        :target: https://pypi.org/project/storm_access/
+.. image:: https://img.shields.io/pypi/v/storm_git
+        :target: https://pypi.org/project/storm_git/
         :alt: Python Package Index
 
 
