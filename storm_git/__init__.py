@@ -14,6 +14,5 @@ from .version import __version__
 
 __all__ = (
     "StormGit",
-
     "__version__",
 )

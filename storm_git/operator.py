@@ -33,14 +33,12 @@ def _stage_files(repository_path: str, files_to_stage: List[Union[str, bytes]]):
 
 
 class RepositoryOperator:
-
     @staticmethod
     def commit(repository_path: str, message: str, **kwargs):
         pass
 
 
 class AllStagedOperator(RepositoryOperator):
-
     @staticmethod
     def commit(repository_path: str, message: str, **kwargs):
         # commiting the files (added, deleted and modified)
@@ -48,21 +46,21 @@ class AllStagedOperator(RepositoryOperator):
 
 
 class AllFilesOperator(RepositoryOperator):
-
     @staticmethod
     def commit(repository_path: str, message: str, **kwargs):
         # getting the staged files (added, deleted and modified)
         repository_status = dulwich.status(repository_path)
 
         # adding unstaged and untracked files to stage
-        _stage_files(repository_path, repository_status.unstaged + repository_status.untracked)
+        _stage_files(
+            repository_path, repository_status.unstaged + repository_status.untracked
+        )
 
         # commiting the files
         return _decode_byte_string(dulwich.commit(repository_path, message, **kwargs))
 
 
 class AllRepositoryOperator(RepositoryOperator):
-
     @staticmethod
     def commit(repository_path: str, message: str, **kwargs):
         # getting the staged files (added, deleted and modified)
@@ -75,8 +73,4 @@ class AllRepositoryOperator(RepositoryOperator):
         return _decode_byte_string(dulwich.commit(repository_path, message, **kwargs))
 
 
-__all__ = (
-    "AllStagedOperator",
-    "AllFilesOperator",
-    "AllRepositoryOperator"
-)
+__all__ = ("AllStagedOperator", "AllFilesOperator", "AllRepositoryOperator")

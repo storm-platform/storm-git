@@ -13,11 +13,7 @@ import os
 import dulwich.porcelain as dulwich
 import dulwich.errors as dulwich_errors
 
-from .operator import (
-    AllStagedOperator,
-    AllFilesOperator,
-    AllRepositoryOperator
-)
+from .operator import AllStagedOperator, AllFilesOperator, AllRepositoryOperator
 
 SUPPORTED_OPERATION_MODE = {
     "files": AllFilesOperator,
@@ -27,17 +23,20 @@ SUPPORTED_OPERATION_MODE = {
 
 
 class StormGit:
-
     def __init__(self, repository_path: str, operation_mode):
         repository_operator = SUPPORTED_OPERATION_MODE.get(operation_mode)
         if not repository_operator:
-            raise NotImplementedError(f"Repository Operation mode `{operation_mode}` is not implemented.")
+            raise NotImplementedError(
+                f"Repository Operation mode `{operation_mode}` is not implemented."
+            )
 
         self._repository_path = repository_path
         self._repository_operator = repository_operator
 
     def commit(self, message: str, **kwargs):
-        return self._repository_operator.commit(self._repository_path, message, **kwargs)
+        return self._repository_operator.commit(
+            self._repository_path, message, **kwargs
+        )
 
     @classmethod
     def init(cls, repository_path: str, operation_mode: str = "files", **kwargs):
@@ -68,6 +67,4 @@ class StormGit:
         return f"[StormGit] {self._repository_path}"
 
 
-__all__ = (
-    "StormGit"
-)
+__all__ = "StormGit"
